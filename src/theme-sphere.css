@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Изглед „Сфера“: тъмният стил на входната страница за цялото приложение.
+   Кожа върху „Дизайнерски“ (data-theme="studio") – включва се с data-skin="sphere".
+   ========================================================================== */
+html[data-theme="studio"][data-skin="sphere"] {
+  --bg: #050816;
+  --surface: rgba(14, 19, 48, 0.72);
+  --surface-2: rgba(34, 44, 100, 0.5);
+  --text: #eef0ff;
+  --muted: #9aa3d0;
+  --line: rgba(140, 150, 255, 0.22);
+  --primary: #7b88ff;
+  --primary-ink: #ffffff;
+  --primary-soft: rgba(123, 136, 255, 0.2);
+  --accent: #5eead4;
+  --ok: #5eead4;
+  --ok-soft: rgba(94, 234, 212, 0.14);
+  --warn: #fbbf24;
+  --warn-soft: rgba(251, 191, 36, 0.14);
+  --bad: #ff8a8a;
+  --bad-soft: rgba(255, 90, 90, 0.16);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 30px -14px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.45), 0 24px 54px -18px rgba(0, 0, 0, 0.8);
+  --blob-a: rgba(70, 85, 230, 0.32);
+  --blob-b: rgba(130, 80, 220, 0.22);
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+html[data-skin="sphere"] body {
+  background: radial-gradient(70% 80% at 70% 40%, #141c63 0%, #0a0f33 48%, #050816 100%) fixed;
+  color: var(--text);
+}
+/* карти, менюта и полета – стъкло */
+html[data-skin="sphere"] .card,
+html[data-skin="sphere"] .task,
+html[data-skin="sphere"] .stat,
+html[data-skin="sphere"] .qr-card { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+html[data-skin="sphere"] input,
+html[data-skin="sphere"] textarea,
+html[data-skin="sphere"] select { background: rgba(5, 8, 22, 0.55); color: var(--text); border-color: var(--line); }
+html[data-skin="sphere"] ::placeholder { color: color-mix(in srgb, var(--muted) 70%, transparent); }
+html[data-skin="sphere"] .sidebar { background: rgba(8, 11, 34, 0.7); }
+html[data-skin="sphere"] .bottomnav { background: rgba(8, 11, 34, 0.82); }
+html[data-skin="sphere"] .modal { background: #0d1238; color: var(--text); border: 1px solid var(--line); }
+html[data-skin="sphere"] .toast { background: #121846; color: var(--text); border-color: var(--line); }
+/* акценти като на началния екран: моноширинен шрифт за малките етикети */
+html[data-skin="sphere"] .section-title,
+html[data-skin="sphere"] .stat .k,
+html[data-skin="sphere"] .ts th,
+html[data-skin="sphere"] .label,
+html[data-skin="sphere"] .chip { font-family: var(--mono); letter-spacing: 0.06em; }
+html[data-skin="sphere"] .btn.primary { box-shadow: 0 10px 26px -10px color-mix(in srgb, var(--primary) 80%, transparent); }
+html[data-skin="sphere"] .topbar .org { color: #fff; }
+html[data-skin="sphere"] a { color: #aab3ff; }
+html[data-skin="sphere"] .sidebar a.active, html[data-skin="sphere"] .bottomnav a.active { color: #c9ceff; }
+html[data-skin="sphere"] .step { background: var(--surface); }
+html[data-skin="sphere"] .bubble.mine { background: var(--primary-soft); }
+html[data-skin="sphere"] .qr-card svg { background: #fff; }
+
+/* сферата зад приложението – приглушена, не пречи на четенето и кликовете */
+.particles.app-bg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.5; pointer-events: none; }
+@media (max-width: 899px) { .particles.app-bg { opacity: 0.3; } }
+@media print { .particles.app-bg { display: none; } html[data-skin="sphere"] body { background: #fff; color: #000; } }
